@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('Magrada', function (Blueprint $table) {
-            $table->foreign(['Id_Publicacio'], 'Magrada_ibfk_1')->references(['Id'])->on('Publicacio')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+        Schema::table('magradas', function (Blueprint $table) {
+            $table->foreign(['Id_Publicacio'], 'magradas_ibfk_1')->references(['Id'])->on('publicacios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('Magrada', function (Blueprint $table) {
-            $table->dropForeign('Magrada_ibfk_1');
+        Schema::table('magradas', function (Blueprint $table) {
+            $table->dropForeign('magradas_ibfk_1');
         });
     }
 };

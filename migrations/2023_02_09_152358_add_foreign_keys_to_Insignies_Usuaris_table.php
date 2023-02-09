@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('Insignies_Usuaris', function (Blueprint $table) {
-            $table->foreign(['Id_Usuari'], 'Insignies_Usuaris_ibfk_1')->references(['Id'])->on('Usuari')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign(['Id_Insignia'], 'Insignies_Usuaris_ibfk_2')->references(['Id'])->on('Insignies')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+        Schema::table('insignies__usuaris', function (Blueprint $table) {
+            $table->foreign(['Id_Usuari'], 'insignies__usuaris_ibfk_1')->references(['Id'])->on('usuaris')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign(['Id_Insignia'], 'insignies__usuaris_ibfk_2')->references(['Id'])->on('insignies')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });
     }
 
@@ -26,9 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('Insignies_Usuaris', function (Blueprint $table) {
-            $table->dropForeign('Insignies_Usuaris_ibfk_1');
-            $table->dropForeign('Insignies_Usuaris_ibfk_2');
+        Schema::table('insignies__usuaris', function (Blueprint $table) {
+            $table->dropForeign('insignies__usuaris_ibfk_1');
+            $table->dropForeign('insignies__usuaris_ibfk_2');
         });
     }
 };

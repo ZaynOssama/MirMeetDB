@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Follow', function (Blueprint $table) {
+        Schema::create('follows', function (Blueprint $table) {
             $table->comment('');
             $table->integer('Id', true);
             $table->integer('Id_Usuari')->nullable()->index('Id_Usuari');
-            $table->integer('Id_Seguir')->nullable()->index('Follow_ibfk_2');
+            $table->integer('Id_Seguir')->nullable()->index('follows_ibfk_2');
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Follow');
+        Schema::dropIfExists('follows');
     }
 };

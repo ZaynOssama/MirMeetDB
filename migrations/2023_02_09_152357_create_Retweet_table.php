@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Retweet', function (Blueprint $table) {
+        Schema::create('retweets', function (Blueprint $table) {
             $table->comment('');
             $table->integer('Id', true);
             $table->dateTime('Data');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Retweet');
+        Schema::dropIfExists('retweets');
     }
 };

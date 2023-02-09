@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Notificacio', function (Blueprint $table) {
+        Schema::create('notificacios', function (Blueprint $table) {
             $table->comment('');
             $table->integer('Id')->primary();
             $table->string('missatge', 50);
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Notificacio');
+        Schema::dropIfExists('notificacios');
     }
 };

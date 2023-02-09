@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('Publicacio', function (Blueprint $table) {
-            $table->foreign(['Id_Usuari'], 'Publicacio_ibfk_1')->references(['Id'])->on('Usuari')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign(['Id_Publicacio'], 'Publicacio_ibfk_2')->references(['Id'])->on('Publicacio')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+        Schema::table('publicacios', function (Blueprint $table) {
+            $table->foreign(['Id_Usuari'], 'publicacios_ibfk_1')->references(['Id'])->on('usuaris')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign(['Id_Publicacio'], 'publicacios_ibfk_2')->references(['Id'])->on('publicacios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });
     }
 
@@ -26,9 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('Publicacio', function (Blueprint $table) {
-            $table->dropForeign('Publicacio_ibfk_1');
-            $table->dropForeign('Publicacio_ibfk_2');
+        Schema::table('publicacios', function (Blueprint $table) {
+            $table->dropForeign('publicacios_ibfk_1');
+            $table->dropForeign('publicacios_ibfk_2');
         });
     }
 };

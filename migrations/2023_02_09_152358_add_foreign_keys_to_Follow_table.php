@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('Follow', function (Blueprint $table) {
-            $table->foreign(['Id_Usuari'], 'Follow_ibfk_1')->references(['Id'])->on('Usuari')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign(['Id_Seguir'], 'Follow_ibfk_2')->references(['Id_Seguir'])->on('Usuari')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+        Schema::table('follows', function (Blueprint $table) {
+            $table->foreign(['Id_Usuari'], 'follows_ibfk_1')->references(['Id'])->on('usuaris')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign(['Id_Seguir'], 'follows_ibfk_2')->references(['Id_Seguir'])->on('usuaris')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });
     }
 
@@ -26,9 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('Follow', function (Blueprint $table) {
-            $table->dropForeign('Follow_ibfk_1');
-            $table->dropForeign('Follow_ibfk_2');
+        Schema::table('follows', function (Blueprint $table) {
+            $table->dropForeign('follows_ibfk_1');
+            $table->dropForeign('follows_ibfk_2');
         });
     }
 };

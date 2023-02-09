@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Publicacio', function (Blueprint $table) {
+        Schema::create('publicacios', function (Blueprint $table) {
             $table->comment('');
             $table->integer('Id', true);
             $table->string('Ref_swp')->nullable();
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Publicacio');
+        Schema::dropIfExists('publicacios');
     }
 };

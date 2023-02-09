@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('Retweet', function (Blueprint $table) {
-            $table->foreign(['Id_Publicacio'], 'Retweet_ibfk_1')->references(['Id'])->on('Publicacio')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+        Schema::table('retweets', function (Blueprint $table) {
+            $table->foreign(['Id_Publicacio'], 'retweets_ibfk_1')->references(['Id'])->on('publicacios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('Retweet', function (Blueprint $table) {
-            $table->dropForeign('Retweet_ibfk_1');
+        Schema::table('retweets', function (Blueprint $table) {
+            $table->dropForeign('retweets_ibfk_1');
         });
     }
 };

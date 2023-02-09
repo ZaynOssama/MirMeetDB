@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Magrada', function (Blueprint $table) {
+        Schema::create('magradas', function (Blueprint $table) {
             $table->comment('');
             $table->integer('Id', true);
             $table->dateTime('Data')->nullable();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Magrada');
+        Schema::dropIfExists('magradas');
     }
 };
