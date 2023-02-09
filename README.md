@@ -1,4 +1,4 @@
-# PymeDB
+# MirMeetDB
 Repositori compartit amb les dades unificades per treballar a Pymeralia
 
 ## Script
