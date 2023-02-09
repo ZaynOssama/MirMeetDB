@@ -31,7 +31,7 @@ class Usuari extends Model
         'Estat_Verificacio',
         'Bloquejat',
         'Validat',
-        'Id_Tipus_Usuari',
+        'tipus_usuari_id',
         'Perfil_image',
         'Tipus_Perfil',
         'Id_Seguir',

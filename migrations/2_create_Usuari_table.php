@@ -14,8 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('usuaris', function (Blueprint $table) {
-            $table->comment('');
-            $table->integer('Id', true);
+            $table->id();
             $table->string('Nom', 50)->nullable();
             $table->string('Cognom', 50)->nullable();
             $table->string('DNI', 50)->nullable();
@@ -24,15 +23,24 @@ return new class extends Migration
             $table->date('Data_Inscripcio')->nullable();
             $table->string('Nom_Usuari', 50)->unique('Nom_Usuari');
             $table->string('Biografia', 50)->nullable();
-            $table->string('Contrasenya', 50);
+            $table->string('Contrasenya', 255);
             $table->string('Correu_Electronic', 50)->unique('Correu_Electronic');
             $table->boolean('Estat_Verificacio')->nullable();
-            $table->boolean('Bloquejat')->nullable();
-            $table->boolean('Validat')->nullable();
-            $table->integer('Id_Tipus_Usuari')->index('Id_Tipus_Usuari');
-            $table->string('Perfil_image')->nullable();
-            $table->enum('Tipus_Perfil', ['t_public', 't_privat'])->nullable();
-            $table->integer('Id_Seguir')->nullable()->index('Id_Seguir');
+            $table->boolean('Bloquejat')->nullable()->default(false);
+            $table->boolean('Validat')->nullable()->default(false);
+            $table->foreignId('tipus_usuari_id')
+            ->references('id')
+            ->on('tipus_usuaris')
+            ->onDelete('cascade')
+            ->constrained();
+            $table->string('Perfil_image', 255)->nullable()->default('https://image.isu.pub/131113230020-a8648deb5fd9c8eaa505bb41f9d2d41a/jpg/page_1.jpg');
+            $table->enum('Tipus_Perfil', ['t_public', 't_privat'])->nullable()->default('t_public');
+            // $table->foreign('follow_id')
+            // ->references('id')
+            // ->on('follows')
+            // ->onDelete('cascade')
+            // ->constrained();
+            $table->timestamps();
         });
     }
 

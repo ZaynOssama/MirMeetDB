@@ -14,13 +14,21 @@ return new class extends Migration
     public function up()
     {
         Schema::create('publicacios', function (Blueprint $table) {
-            $table->comment('');
-            $table->integer('Id', true);
+            $table->id();
             $table->string('Ref_swp')->nullable();
             $table->string('Comentari', 150)->nullable();
-            $table->integer('Id_Publicacio')->nullable()->index('Id_Publicacio');
-            $table->integer('Id_Usuari')->index('Id_Usuari');
+            $table->foreignId('publicacio_id')
+            ->references('id')
+            ->on('publicacios')
+            ->onDelete('cascade')
+            ->constrained();
+            $table->foreignId('usuari_id')
+            ->references('id')
+            ->on('usuaris')
+            ->onDelete('cascade')
+            ->constrained();
             $table->date('Censurat')->nullable();
+            $table->timestamps();
         });
     }
 

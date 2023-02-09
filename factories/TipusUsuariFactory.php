@@ -36,7 +36,7 @@ class TipusUsuariFactory extends Factory
 
 
         return [
-            'Tipus_Usuari' => fake()->text('client'),
+            'Tipus_Usuari' => 'client',
         ];
     }
 }

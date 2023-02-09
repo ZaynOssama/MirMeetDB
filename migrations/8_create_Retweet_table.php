@@ -15,9 +15,14 @@ return new class extends Migration
     {
         Schema::create('retweets', function (Blueprint $table) {
             $table->comment('');
-            $table->integer('Id', true);
+            $table->id();
             $table->dateTime('Data');
-            $table->integer('Id_Publicacio')->index('Id_Publicacio');
+            $table->foreignId('publicacio_id')
+            ->references('id')
+            ->on('publicacios')
+            ->onDelete('cascade')
+            ->constrained();
+            $table->timestamps();
         });
     }
 

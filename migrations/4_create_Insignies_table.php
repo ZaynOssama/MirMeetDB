@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('insignies', function (Blueprint $table) {
-            $table->comment('');
-            $table->integer('Id', true);
+            $table->id();
             $table->string('Nom', 50);
+            $table->timestamps();
         });
     }
 

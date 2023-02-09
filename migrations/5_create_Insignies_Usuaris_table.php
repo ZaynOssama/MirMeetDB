@@ -14,10 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('insignies__usuaris', function (Blueprint $table) {
-            $table->comment('');
-            $table->integer('Id', true);
-            $table->integer('Id_Usuari')->index('Id_Usuari');
-            $table->integer('Id_Insignia')->index('Id_Insignia');
+            $table->id();
+            $table->foreignId('usuari_id')->constrained();
+            $table->foreignId('insignie_id')
+            ->references('id')
+            ->on('insignies')
+            ->onDelete('cascade')
+            ->constrained();
+            $table->timestamps();
         });
     }
 

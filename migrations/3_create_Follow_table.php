@@ -14,10 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('follows', function (Blueprint $table) {
-            $table->comment('');
-            $table->integer('Id', true);
-            $table->integer('Id_Usuari')->nullable()->index('Id_Usuari');
-            $table->integer('Id_Seguir')->nullable()->index('follows_ibfk_2');
+            $table->id();
+            $table->foreignId('usuari_id')
+            ->references('id')
+            ->on('usuaris')
+            ->onDelete('cascade')
+            ->constrained();
+            // $table->foreignId('usuari_id')
+            // ->references('id')
+            // ->on('usuaris')
+            // ->onDelete('cascade')
+            // ->constrained();
         });
     }
 

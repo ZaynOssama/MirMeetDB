@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 use App\Models\Insignies;
 use App\Models\TipusUsuari;
@@ -44,15 +45,11 @@ class UsuariFactory extends Factory
             'Data_Naixement' => fake()->date(),
             'Data_Inscripcio' => fake()->date(),
             'Nom_Usuari' => fake()->userName(),
-            'Biografia' => fake()->text(),
+            'Biografia' => fake()->password(),
             'Contrasenya' => bcrypt('r00t'),
             'Correu_Electronic' => fake()->unique()->safeEmail(),
-            'Estat_Verificacio' => fake()->numberBetween(0.1),
-            'Bloquejat' => fake()->numberBetween(0.1),
-            'Id_Tipus_Usuari' => fake()->numberBetween(0.1),
-            'Perfil_image'=> fake()->text('https://image.isu.pub/131113230020-a8648deb5fd9c8eaa505bb41f9d2d41a/jpg/page_1.jpg'),
-            'Tipus_Perfil' => fake()->randomElement($tipus_usuari_id),
-            'Id_Seguir' =>fake()->randomElement($follow_id),
+            'tipus_usuari_id' => $this->faker->randomElement(TipusUsuari::all())['id'],
+            // 'Id_Seguir' => $this->faker->randomElement($follow_id),
         ];
     }
 }

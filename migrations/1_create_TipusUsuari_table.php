@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('magradas', function (Blueprint $table) {
-            $table->foreign(['Id_Publicacio'], 'magradas_ibfk_1')->references(['Id'])->on('publicacios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+        Schema::create('tipus_usuaris', function (Blueprint $table) {
+            $table->id();
+            $table->enum('Tipus_Usuari', ['client','admin'])->default('client');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('magradas', function (Blueprint $table) {
-            $table->dropForeign('magradas_ibfk_1');
-        });
+        Schema::dropIfExists('tipus_usuaris');
     }
 };
