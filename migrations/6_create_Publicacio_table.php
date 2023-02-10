@@ -13,21 +13,23 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('publicacios', function (Blueprint $table) {
+        Schema::create('publications', function (Blueprint $table) {
             $table->id();
-            $table->string('Ref_swp')->nullable();
-            $table->string('Comentari', 150)->nullable();
-            $table->foreignId('publicacio_id')
+            $table->string('images')->nullable();
+            $table->string('comment', 150)->nullable();
+            $table->foreignId('publication_id')
             ->references('id')
-            ->on('publicacios')
+            ->on('publications')
             ->onDelete('cascade')
             ->constrained();
-            $table->foreignId('usuari_id')
+            
+            $table->foreignId('user_id')
             ->references('id')
-            ->on('usuaris')
+            ->on('users')
             ->onDelete('cascade')
             ->constrained();
-            $table->date('Censurat')->nullable();
+            
+            $table->date('censored')->nullable();
             $table->timestamps();
         });
     }
