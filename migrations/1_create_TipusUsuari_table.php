@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tipus_usuaris', function (Blueprint $table) {
+        Schema::create('type_users', function (Blueprint $table) {
             $table->id();
-            $table->enum('Tipus_Usuari', ['client','admin'])->default('client');
+            $table->enum('type_user', ['client','admin'])->default('client');
             $table->timestamps();
         });
     }
