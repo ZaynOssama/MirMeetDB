@@ -2,19 +2,28 @@
 
 namespace Database\Seeders;
 
-use App\Models\Usuari;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
 
-class UsuariSeeder extends Seeder
+class DatabaseSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Seed the application's database.
      *
      * @return void
      */
     public function run()
     {
-        Usuari::factory(12)->create();
+        User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@email.com',
+            'role' => 'admin',
+            'access' => 'yes',
+            'verified' => 'yes',
+            'password' => bcrypt('admin123')
+        ]);
+
+        User::factory(50)->create();
     }
 }

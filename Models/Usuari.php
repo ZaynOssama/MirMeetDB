@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Usuari extends Model
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -18,22 +18,35 @@ class Usuari extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'Nom',
-        'Cognom',
-        'DNI',
-        'Telefon',
-        'Data_Naixement',
-        'Data_Inscripcio',
-        'Nom_Usuari',
-        'Biografia',
-        'Contrasenya',
-        'Correu_Electronic',
-        'Estat_Verificacio',
-        'Bloquejat',
-        'Validat',
-        'tipus_usuari_id',
-        'Perfil_image',
-        'Tipus_Perfil',
-        'Id_Seguir',
+        'name',
+        'email',
+        'username',
+        'role',
+        'access',
+        'verified',
+        'password',
+        'avatar',
+        'external_id',
+        'external_outh',
+    ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 }
+
