@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('external_id')->nullable();
             $table->string('external_auth')->nullable();
             $table->rememberToken();
+
             $table->timestamps();
         });
     }
@@ -43,5 +44,10 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+    }
+
+    /**
+     */
+    public function __construct() {
     }
 };

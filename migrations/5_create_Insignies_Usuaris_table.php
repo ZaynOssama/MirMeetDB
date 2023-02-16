@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('insignies__usuaris', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuari_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->foreignId('insignie_id')
             ->references('id')
             ->on('insignies')

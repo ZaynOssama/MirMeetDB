@@ -26,14 +26,14 @@ return new class extends Migration
             ->on('magradas')
             ->onDelete('cascade')
             ->constrained();
-            $table->foreignId('usuari_id')
+            $table->foreignId('user_id')
             ->references('id')
-            ->on('usuaris')
+            ->on('users')
             ->onDelete('cascade')
             ->constrained();
-            $table->foreignId('publicacio_id')
+            $table->foreignId('publication_id')
             ->references('id')
-            ->on('publicacios')
+            ->on('publications')
             ->onDelete('cascade')
             ->constrained();
             $table->date('Censurat')->nullable();
