@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('magradas', function (Blueprint $table) {
             $table->id();
             $table->dateTime('Data')->nullable();
-            $table->foreignId('publicacio_id')->constrained();
+            $table->foreignId('publication_id')->constrained();
             $table->timestamps();
         });
     }

@@ -17,9 +17,9 @@ return new class extends Migration
             $table->comment('');
             $table->id();
             $table->dateTime('Data');
-            $table->foreignId('publicacio_id')
+            $table->foreignId('publication_id')
             ->references('id')
-            ->on('publicacios')
+            ->on('publications')
             ->onDelete('cascade')
             ->constrained();
             $table->timestamps();

@@ -13,21 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('publicacios', function (Blueprint $table) {
+        Schema::create('publications', function (Blueprint $table) {
             $table->id();
-            $table->string('Ref_swp')->nullable();
-            $table->string('Comentari', 150)->nullable();
-            $table->foreignId('publicacio_id')
-            ->references('id')
-            ->on('publicacios')
-            ->onDelete('cascade')
-            ->constrained();
-            $table->foreignId('usuari_id')
-            ->references('id')
-            ->on('usuaris')
-            ->onDelete('cascade')
-            ->constrained();
-            $table->date('Censurat')->nullable();
+            $table->string('image')->nullable();
+            $table->string('comment', 150)->nullable();
+            $table->foreignId('publication_id')->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->date('censored')->nullable()->default(null);
             $table->timestamps();
         });
     }
@@ -39,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('publicacios');
+        Schema::dropIfExists('publications');
     }
 };

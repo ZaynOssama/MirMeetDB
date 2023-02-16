@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('follows', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuari_id')
+            $table->foreignId('user_id')
             ->references('id')
-            ->on('usuaris')
+            ->on('users')
             ->onDelete('cascade')
             ->constrained();
             // $table->foreignId('usuari_id')

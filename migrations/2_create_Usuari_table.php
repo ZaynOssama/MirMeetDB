@@ -13,28 +13,24 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('usuaris', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('Nom', 50)->nullable();
-            $table->string('Cognom', 50)->nullable();
-            $table->string('DNI', 50)->nullable();
-            $table->string('Telefon', 50)->nullable();
-            $table->date('Data_Naixement')->nullable();
-            $table->date('Data_Inscripcio')->nullable();
-            $table->string('Nom_Usuari', 50)->unique('Nom_Usuari');
-            $table->string('Biografia', 50)->nullable();
-            $table->string('Contrasenya', 255);
-            $table->string('Correu_Electronic', 50)->unique('Correu_Electronic');
-            $table->boolean('Estat_Verificacio')->nullable();
-            $table->boolean('Bloquejat')->nullable()->default(false);
-            $table->boolean('Validat')->nullable()->default(false);
-            $table->foreignId('tipus_usuari_id')
-            ->references('id')
-            ->on('tipus_usuaris')
-            ->onDelete('cascade')
-            ->constrained();
-            $table->string('Perfil_image', 255)->nullable()->default('https://image.isu.pub/131113230020-a8648deb5fd9c8eaa505bb41f9d2d41a/jpg/page_1.jpg');
-            $table->enum('Tipus_Perfil', ['t_public', 't_privat'])->nullable()->default('t_public');
+            $table->string('firstname', 50)->nullable();
+            $table->string('lastname', 50)->nullable();
+            $table->string('ID-DNI', 50)->nullable();
+            $table->string('phone', 50)->nullable();
+            $table->date('date_birth')->nullable();
+            $table->date('date_registration')->nullable();
+            $table->string('name_user', 50)->unique('Nom_Usuari');
+            $table->string('biography', 50)->nullable();
+            $table->string('password', 255);
+            $table->string('email', 50)->unique('Correu_Electronic');
+            $table->enum('state_verification', ['ToDo','InProgress','Done'])->nullable()->default('ToDo');
+            $table->enum('blocked', ['yes','no'])->nullable()->default('no');
+            $table->enum('validated', ['yes','no'])->nullable()->default('no');
+            $table->foreignId('type_user_id')->constrained();
+            $table->string('profile_image', 255)->nullable()->default('https://image.isu.pub/131113230020-a8648deb5fd9c8eaa505bb41f9d2d41a/jpg/page_1.jpg');
+            $table->enum('profile_type', ['public', 'private'])->nullable()->default('public');
             // $table->foreign('follow_id')
             // ->references('id')
             // ->on('follows')
@@ -51,6 +47,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuaris');
+        Schema::dropIfExists('users');
     }
 };
