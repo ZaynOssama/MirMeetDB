@@ -28,6 +28,7 @@ return new class extends Migration
             $table->enum('state_verification', ['ToDo','InProgress','Done'])->nullable()->default('ToDo');
             $table->enum('blocked', ['yes','no'])->nullable()->default('no');
             $table->enum('validated', ['yes','no'])->nullable()->default('no');
+
             $table->foreignId('type_user_id')->constrained();
             $table->string('profile_image', 255)->nullable()->default('https://image.isu.pub/131113230020-a8648deb5fd9c8eaa505bb41f9d2d41a/jpg/page_1.jpg');
             $table->enum('profile_type', ['public', 'private'])->nullable()->default('public');
@@ -48,5 +49,10 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+    }
+
+    /**
+     */
+    public function __construct() {
     }
 };
