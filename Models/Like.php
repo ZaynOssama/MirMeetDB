@@ -9,7 +9,7 @@ class Like extends Model
 {
     use HasFactory;
 
-    protected $table = "like";
+    protected $table = "likes";
 
     protected $fillable = [
         'date',
