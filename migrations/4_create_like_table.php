@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->dateTime('date')->nullable();
             $table->foreignId('publication_id')->constrained();
+            $table->date('hidden')->nullable()->default(null);
             $table->timestamps();
         });
     }
