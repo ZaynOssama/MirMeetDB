@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('publications', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->nullable();
-            $table->string('comment', 150)->nullable();
+            $table->string('ref_swarm')->nullable();
             $table->foreignId('publication_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->date('censored')->nullable()->default(null);
+            $table->date('hidden')->nullable()->default(null);
             $table->timestamps();
         });
     }
