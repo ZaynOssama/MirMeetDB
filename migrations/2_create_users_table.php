@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('username');
-            $table->string('dni');
-            $table->string('phone');
-            $table->string('birthdate');
-            $table->string('bibliografy');
+            $table->string('username')->unique()->notNullable();
+            $table->string('dni')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('birthdate')->nullable();
+            $table->string('bibliografy')->nullable();
             $table->string('email')->unique();
             $table->enum('role', ['admin', 'client'])->default('client');
             $table->enum('access', ['yes', 'no', 'denied', 'banned'])->default('no');
@@ -31,7 +31,6 @@ return new class extends Migration
             $table->string('external_id')->nullable();
             $table->string('external_auth')->nullable();
             $table->rememberToken();
-
             $table->timestamps();
         });
     }
