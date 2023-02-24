@@ -12,19 +12,18 @@ class Message extends Model
     protected $table = "messages";
     
     protected $fillable = [
-        'sender_id',
-        'recipient_id',
-        'subject',
-        'body'
+        'sentby_id',
+        'sento_id',
+        'text'
     ];
 
     public function sender()
     {
-        return $this->belongsTo(User::class, 'sender_id');
+        return $this->belongsTo(User::class, 'sentby_id');
     }
 
     public function recipient()
     {
-        return $this->belongsTo(User::class, 'recipient_id');
+        return $this->belongsTo(User::class, 'sento_id');
     }
 }
