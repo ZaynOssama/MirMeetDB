@@ -17,5 +17,6 @@ class Notificacio extends Model
         'publication_id',
         'like_id',
         'user_id',
+        'hidden',
     ];
 }
