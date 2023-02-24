@@ -14,7 +14,7 @@ return new class extends Migration
             $table->dateTime('date');
             $table->foreignId('publication_id')
             ->references('id')
-            ->on('publication')
+            ->on('publications')
             ->onDelete('cascade')
             ->constrained();
             $table->timestamps();
