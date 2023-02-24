@@ -14,7 +14,8 @@ class Message extends Model
     protected $fillable = [
         'sentby_id',
         'sento_id',
-        'text'
+        'text',
+        'hidden',
     ];
 
     public function sender()
