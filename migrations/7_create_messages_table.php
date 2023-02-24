@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('text');
             $table->unsignedBigInteger('sentby_id');
             $table->unsignedBigInteger('sento_id');
+            $table->date('hidden')->nullable()->default(null);
             $table->timestamps();
 
             $table->foreign('sentby_id')->references('id')->on('users');
