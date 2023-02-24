@@ -13,17 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('notificacios', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->string('missatge', 50);
-            $table->foreignId('retweet_id')
+            $table->foreignId('message_id')
             ->references('id')
-            ->on('retweets')
+            ->on('messages')
             ->onDelete('cascade')
             ->constrained();
-            $table->foreignId('magrada_id')
+            $table->foreignId('share_id')
             ->references('id')
-            ->on('magradas')
+            ->on('shares')
+            ->onDelete('cascade')
+            ->constrained();
+            $table->foreignId('like_id')
+            ->references('id')
+            ->on('likes')
             ->onDelete('cascade')
             ->constrained();
             $table->foreignId('user_id')
@@ -36,7 +40,7 @@ return new class extends Migration
             ->on('publications')
             ->onDelete('cascade')
             ->constrained();
-            $table->date('Censurat')->nullable();
+            $table->date('hidden')->nullable()->default(null);
             $table->timestamps();
         });
     }
@@ -48,6 +52,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notificacios');
+        Schema::dropIfExists('notifications');
     }
 };
