@@ -6,7 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 
-class UserSeeder extends Seeder
+class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -17,11 +17,12 @@ class UserSeeder extends Seeder
     {
         User::factory()->create([
             'name' => 'admin',
+            'username' => 'superadmin',
             'email' => 'admin@email.com',
             'role' => 'admin',
             'access' => 'yes',
             'verified' => 'yes',
-            'password' => bcrypt('r00t')
+            'password' => bcrypt('admin123')
         ]);
 
         User::factory(50)->create();
