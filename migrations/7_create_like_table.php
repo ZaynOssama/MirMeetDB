@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('likes', function(Blueprint $table){
             $table->id();
-            $table->dateTime('data')->nullable();
+            $table->dateTime('date')->nullable();
             $table->foreignId('publication_id')->constrained();
             $table->timestamps();
         });
